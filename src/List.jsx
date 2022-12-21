@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-const List = ({ tour, setTour }) => {
+const List = ({ id, name, image, info, price, setTour, tour, fetchData }) => {
+  const [readMore, setReadMore] = useState(false);
+
   const remove = (id) => {
     // console.log(id);
 
@@ -9,58 +11,40 @@ const List = ({ tour, setTour }) => {
     setTour(newTour);
   };
 
-  const noTours = () => {
-    console.log("click");
-    setTour(tour);
-  };
-
-  if (tour.length === 0) {
-    return (
-      <section className="no__tours">
-        <button className="btn btn--no__tours" onClick={() => noTours()}>
-          refresh
-        </button>
-      </section>
-    );
+  {
+    /* console.log(`* ~ file: List.jsx:10 ~ {tour.map ~ newPrice`, newPrice); */
   }
+  const newPrice = parseFloat(price) * 2_00_000;
 
   return (
     <>
-      {tour.map((tourItem) => {
-        let { id, name, image, price } = tourItem;
+      <article className="tours__card" key={id}>
+        <img
+          src={image}
+          alt="tour image"
+          loading="lazy"
+          className="tour__image"
+        />
 
-        const newPrice = parseFloat(price) * 2_00_000;
-        // console.log(`* ~ file: List.jsx:10 ~ {tour.map ~ newPrice`, newPrice);
+        <div className="tours__card__heading">
+          <h2 className="tours__card__title">{name}</h2>
+          <h3 className="tours__card__price"> ₹{newPrice}</h3>
+        </div>
 
-        return (
-          <article className="tours__card" key={id}>
-            <img
-              src={image}
-              alt="tour image"
-              loading="lazy"
-              className="tour__image"
-            />
+        <p className="tours__card__paragraph">
+          {readMore ? info : info.slice(0, 110)}
+          <span
+            className="tours__card__button"
+            onClick={() => setReadMore(!readMore)}
+          >
+            {readMore ? "read less" : " read more ...."}
+          </span>
+        </p>
 
-            <div className="tours__card__heading">
-              <h2 className="tours__card__title">{name}</h2>
-              <h3 className="tours__card__price"> ₹{newPrice}</h3>
-            </div>
-
-            <p className="tours__card__paragraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-              odio quaerat quasi.
-              <span className="tours__card__button">read more</span>
-            </p>
-
-            <button
-              className="btn btn--not__interested"
-              onClick={() => remove(id)}
-            >
-              not interested
-            </button>
-          </article>
-        );
-      })}
+        <button className="btn btn--not__interested" onClick={() => remove(id)}>
+          not interested
+        </button>
+      </article>
     </>
   );
 };

@@ -109,13 +109,13 @@ p {
 
 
 .btn{
+    display: block;
     padding: .5rem 1rem;
     font-size: var(--font-size-h5);
     text-transform: capitalize;
     letter-spacing: 1px;
     font-weight: bold;
     color: var(--tertiary-color);
-    display: block;
     margin: 0 auto;
     margin-bottom: 1rem;
 border: none;
@@ -131,6 +131,12 @@ border-radius: .5rem;
     color: black;
     transform: translateY(5px);
 }
+
+
+
+
+
+
 
 
 .loading{
@@ -157,6 +163,55 @@ border-radius: .5rem;
 }
 
 
+
+.btn--no__tours{
+    display: block;
+        padding: .5rem 1rem;
+        font-size: var(--font-size-h5);
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: var(--tertiary-color);
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        border: none;
+        border: 1px solid var(--primary-color);
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+        border-radius: .5rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: .8;
+
+&:hover{
+        background-color: var(--secondary-color);
+            color: black;
+            opacity: 1;
+            top: 31%;
+        
+}
+
+}
+
+.tours__card__button{
+    background-color: whitesmoke;
+    color: var(--tertiary-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-8);
+    &:hover{
+        color : blue
+    }
+}
+
+
+.no__tours__left{
+    text-align: center;
+    padding: 1rem;
+    color: var(--tertiary-color);
+}
 
 
 // main Style
@@ -193,7 +248,6 @@ display: grid;
 grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
 width: 92vw;
 margin: 0 auto;
-justify-content: center;
 gap: 1rem;
 padding-bottom: 2rem;
 }
@@ -201,7 +255,7 @@ padding-bottom: 2rem;
 .tours__card{
     box-shadow: var(--box-shadow-1);
     background-color: var(--background-color);
-
+display: grid;
 
     &__title{
         font-size: var(--font-size-h5);

@@ -35,6 +35,23 @@ const App = () => {
     );
   }
 
+  const noTours = () => {
+    // console.log("click");
+    fetchData();
+  };
+
+  if (tour.length === 0) {
+    return (
+      <section className="no__tours">
+        <h2 className="no__tours__left">No Tours Left</h2>
+
+        <button className=" btn--no__tours" onClick={() => noTours()}>
+          refresh
+        </button>
+      </section>
+    );
+  }
+
   return (
     <>
       <main className="main">
@@ -42,7 +59,17 @@ const App = () => {
         <div className="underline"></div>
 
         <section className="tours__container">
-          <List tour={tour} setTour={setTour} />
+          {tour.map((tourItem) => {
+            return (
+              <List
+                {...tourItem}
+                setTour={setTour}
+                fetchData={fetchData}
+                tour={tour}
+                key={tourItem.id}
+              />
+            );
+          })}
         </section>
       </main>
     </>
